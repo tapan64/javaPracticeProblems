@@ -1,10 +1,10 @@
-package javaPracticeProblems;
+package CosmeticsApp;
 import java.util.Scanner;
 public class CosmeticsDriver {
 
 	public static void main(String[] args) {
 		Scanner in=new Scanner(System.in);
-		Cosmetics cosmetics=new Cosmetics();
+		Cosmetic cosmetics=new Cosmetic();
 		while(true) {
 			//menu driven program
 			System.out.println("1. Add a new cosmetic");

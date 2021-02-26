@@ -1,4 +1,4 @@
-package javaPracticeProblems;
+package MobileApp;
 import java.util.Scanner;
 public class Mobile {
 	Scanner in=new Scanner(System.in);

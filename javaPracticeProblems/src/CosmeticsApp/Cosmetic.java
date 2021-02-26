@@ -1,7 +1,7 @@
-package javaPracticeProblems;
+package CosmeticsApp;
 
 import java.util.Scanner;
-public class Cosmetics {
+public class Cosmetic {
 	//create cosmetics class
 	//with id, name, brand, quantity & price
 	static Scanner in=new Scanner(System.in);
@@ -10,22 +10,22 @@ public class Cosmetics {
 	private String brand;
 	private int quantity;
 	private double price;
-	public Cosmetics(int id,String name,String brand,int quantity,double price) {
+	public Cosmetic(int id,String name,String brand,int quantity,double price) {
 		this.id=id;
 		this.name=name;
 		this.brand=brand;
 		this.quantity=quantity;
 		this.price=price;
 	}
-	public Cosmetics() {
+	public Cosmetic() {
 		
 	}
 	//create cosmetics array
-	static Cosmetics[] cosmetics=new Cosmetics[10];
+	static Cosmetic[] cosmetics=new Cosmetic[10];
 	static int cosmeticsCount=0;
 	//resize array size;
 	static void resize() {
-		Cosmetics[] newarr=new Cosmetics[cosmetics.length+10];
+		Cosmetic[] newarr=new Cosmetic[cosmetics.length+10];
 		for(int i=0;i<cosmetics.length;i++) {
 			newarr[i]=cosmetics[i];
 		}
@@ -45,7 +45,7 @@ public class Cosmetics {
 		int quantity=in.nextInt();
 		System.out.println("Enter Price");
 		double price=in.nextDouble();
-		cosmetics[cosmeticsCount++]=new Cosmetics(id,name,brand,quantity,price);
+		cosmetics[cosmeticsCount++]=new Cosmetic(id,name,brand,quantity,price);
 	}
 	//display all cosmetics
 	public void displayAllCosmetics() {
