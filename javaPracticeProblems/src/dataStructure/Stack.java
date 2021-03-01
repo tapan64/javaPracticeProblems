@@ -1,4 +1,4 @@
-package Stack;
+package dataStructure;
 
 public class Stack {
 	/*
@@ -26,7 +26,7 @@ public class Stack {
 	public int pop() {
 		if (isEmpty()) {
 			System.out.println("Stack is Empty");
-			return 0;
+			return -1;
 		}
 		return array[--count];
 	}
@@ -34,7 +34,7 @@ public class Stack {
 	public int peek() {
 		if (isEmpty()) {
 			System.out.println("Stack is Empty");
-			return 0;
+			return -1;
 		}
 		return array[count-1];
 	}
