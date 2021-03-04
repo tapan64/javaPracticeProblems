@@ -23,8 +23,8 @@ public class ProjectDriver {
 		 * implement Project class
 		 * implement all the methods
 		 */
-		
-		while(true) {
+		boolean flag=true;
+		do {
 			System.out.println("1. Add new project details");
 			System.out.println("2. Display all project details");
 			System.out.println("3. Sort projects by project name");
@@ -49,12 +49,12 @@ public class ProjectDriver {
 			break;
 			case 6: displayProjectsOfGivenTechnology();
 			break;
-			case 7: System.exit(0);
+			case 7: flag=false;
 			break;
 			default:
 				System.out.println("Incorrect Input! Try Again");
 			}
-		}
+		}while(flag);
 	}
 	static void addNewProjectDetail() {
 		System.out.println("Enter number of projects to be added");

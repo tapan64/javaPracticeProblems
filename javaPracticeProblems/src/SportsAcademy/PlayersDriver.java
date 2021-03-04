@@ -15,7 +15,8 @@ public class PlayersDriver {
 		 * descending order & if age is same sort by name. 5. Update number of matches
 		 * played by given player name. 9. Exit.
 		 */
-		while (true) {
+		boolean flag=true;
+		do {
 			int choice = displayMenu();
 			switch (choice) {
 			case 1:
@@ -34,12 +35,12 @@ public class PlayersDriver {
 				updateMatchesPlayedByName();
 				break;
 			case 9:
-				System.exit(0);
+				flag=false;
 				break;
 			default:
 				System.out.println("Incorrect Input! Try Again");
 			}
-		}
+		}while(flag);
 
 	}
 

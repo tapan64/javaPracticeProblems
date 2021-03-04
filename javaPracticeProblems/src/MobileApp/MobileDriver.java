@@ -14,7 +14,8 @@ public class MobileDriver {
 		 * 5. Delete the mobile details based on Mobile Id.
 		 * 6. Exit
 		 */
-		while(true) {
+		boolean flag=true;
+		do {
 			int choice = displayMenuAndTakeInput();
 			switch(choice) {
 			case 1:addNewMobileDetail();
@@ -27,11 +28,11 @@ public class MobileDriver {
 			break;
 			case 5:deleteMobileDetail();
 			break;
-			case 9:System.exit(0);
+			case 9:flag=false;
 			break;
 			default:System.out.println("Incorrect Input, Try Again");
 			}
-		}
+		}while (flag);
 	}
 	private static int displayMenuAndTakeInput() {
 		System.out.println("========================================================================================================");

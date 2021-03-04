@@ -17,8 +17,8 @@ public class EmployeeDriver {
 		// 5. Delete an employee for given EmpId.
 		// 6. Update Employee designation with provided designation for given Employee
 		// name.
-
-		while (true) {
+		boolean flag=true;
+		do {
 			int choice = displayMenuAndEnterChoice();
 			switch (choice) {
 			case 1:
@@ -40,10 +40,10 @@ public class EmployeeDriver {
 				updateEmployeeDesignationByGivenName();
 				break;
 			case 9:
-				System.exit(0);
+				flag=false;
 				break;
 			}
-		}
+		}while (flag);
 	}
 
 	private static int displayMenuAndEnterChoice() {

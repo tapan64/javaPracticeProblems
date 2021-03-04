@@ -9,7 +9,8 @@ public class CosmeticsDriver {
 	static int cosmeticsCount;
 
 	public static void main(String[] args) {
-		while (true) {
+		boolean flag=true;
+		do {
 			int choice = displayMenuAndTakeChoice(in);
 			switch (choice) {
 			case 1:
@@ -28,12 +29,12 @@ public class CosmeticsDriver {
 				updateQuantity();
 				break;
 			case 9:
-				System.exit(0);
+				flag=false;
 				break;
 			default:
 				System.out.println("Incorrect Input");
 			}
-		}
+		}while(flag);
 	}
 
 	private static int displayMenuAndTakeChoice(Scanner in) {
