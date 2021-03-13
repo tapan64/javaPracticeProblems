@@ -5,13 +5,13 @@ public class Movie {
 	private String name;
 	private String[] casting;
 	private short yearOfRelease;
-	private byte rating;
+	private float rating;
 
 	public Movie() {
 		super();
 	}
 
-	public Movie(int id, String name, String[] casting, short yearOfRelease, byte rating) {
+	public Movie(int id, String name, String[] casting, short yearOfRelease, float rating) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,11 +52,11 @@ public class Movie {
 		this.yearOfRelease = yearOfRelease;
 	}
 
-	public byte getRating() {
+	public float getRating() {
 		return rating;
 	}
 
-	public void setRating(byte rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
 

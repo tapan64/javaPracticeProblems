@@ -44,7 +44,7 @@ public class MovieApp {
 				break;
 			case 3:
 				System.out.println("Enter movie rating to be searched: ");
-				byte rating = in.nextByte();
+				float rating = in.nextFloat();
 				Movie[] moviesByRating = searchMoviesByGivenRating(rating);
 				displayAllMovies(moviesByRating);
 				break;
@@ -76,9 +76,10 @@ public class MovieApp {
 				System.out.println("System Exit......");
 				flag = false;
 				break;
+			default:
+				System.out.println("Incorrect Choice! Try Again");
 			}
 		} while (flag);
-
 	}
 
 	private static Movie getNewMovie() {
@@ -99,7 +100,7 @@ public class MovieApp {
 		System.out.println("Enter movie year of release: ");
 		short yearOfRelease = in.nextShort();
 		System.out.println("Enter movie rating(1 to 5): ");
-		byte rating = in.nextByte();
+		float rating = in.nextFloat();
 		return new Movie(id, name, casting, yearOfRelease, rating);
 	}
 
@@ -139,7 +140,7 @@ public class MovieApp {
 		return newarr;
 	}
 
-	private static Movie[] searchMoviesByGivenRating(byte rating) {
+	private static Movie[] searchMoviesByGivenRating(float rating) {
 		int count = 0;
 		for (int i = 0; i < moviesCount; i++)
 			if (movies[i].getRating() >= rating)
@@ -187,7 +188,6 @@ public class MovieApp {
 	private static void displayAllMovies(Movie[] array) {
 		for (int i = 0; i < array.length; i++)
 			displayMovie(array[i]);
-
 	}
 
 	private static void displayMovie(Movie movie) {
@@ -202,7 +202,6 @@ public class MovieApp {
 		System.out.println("Movie year of release: " + movie.getYearOfRelease());
 		System.out.println("Movie rating: " + movie.getRating());
 		System.out.println("========================================");
-
 	}
 
 	private static Movie[] deleteMovieById(int id) {
@@ -227,6 +226,5 @@ public class MovieApp {
 		System.out.println("6. Delete movie by given movie id.");
 		System.out.println("7. Exit.");
 		System.out.println("---------------------------------------------------");
-
 	}
 }
