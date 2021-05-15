@@ -1,4 +1,4 @@
-package ProblemsDay4Mar12;
+package Problems1_3;
 
 import java.util.Scanner;
 
@@ -19,6 +19,10 @@ public class Problem2 {
 		in.nextLine();
 		System.out.println("Enter input 2: ");
 		String str2 = in.next();
+		separateStrings(str1, str2);
+	}
+
+	private static void separateStrings(String str1, String str2) {
 		String res1 = "";
 		String res2 = "";
 		int i = 0;
@@ -44,8 +48,8 @@ public class Problem2 {
 			i++;
 		}
 
-		System.out.println("Output String 1: "+res1);
-		System.out.println("Output String 2: "+res2);
+		System.out.println("Output String 1: " + res1);
+		System.out.println("Output String 2: " + res2);
 	}
 
 	private static boolean isPresent(String str, char ch) {

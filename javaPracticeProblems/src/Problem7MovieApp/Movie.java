@@ -7,9 +7,9 @@ public class Movie {
 	private short yearOfRelease;
 	private float rating;
 
-	public Movie() {
-		super();
-	}
+	//public Movie() {
+		//super();
+	//}
 
 	public Movie(int id, String name, String[] casting, short yearOfRelease, float rating) {
 		super();

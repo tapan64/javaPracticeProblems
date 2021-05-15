@@ -1,4 +1,4 @@
-package ProblemsDay4Mar12;
+package Problem4InsuranceApp;
 
 public class Policy {
 	private int id;

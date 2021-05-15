@@ -2,16 +2,26 @@ package ProblemsDay3Mar10;
 
 import java.util.Scanner;
 
+// input: banana, mango, apple
+// input: search String: mango
+// output: YES
 public class Problem5 {
 
 	public static void main(String[] args) {
+		String s1="test1";
+		String abc="abc";
+		System.out.println(s1.compareTo(abc));
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter number of fruits: ");
 		int size = in.nextInt();
 		System.out.println("Enter fruits name: ");
 		String[] fruits = new String[size];
-		for (int i = 0; i < size; i++)
-			fruits[i] = in.next();
+		for (int i = 0; i < size; i++) {
+			String str=in.next();
+			String lowerStr=lowerCase(str);
+			fruits[i] =lowerStr; 
+			
+		}
 		fruits = bubbleSort(fruits);
 		System.out.println("Enter fruit to be searched: ");
 		String target = in.next();
@@ -26,6 +36,16 @@ public class Problem5 {
 		else
 			System.out.println("NO");
 
+	}
+	private static String lowerCase(String str) {
+		String res="";
+		for(int i=0;i<str.length();i++) {
+			if(str.charAt(i)>=65 && str.charAt(i)<=90)
+				res+=(char)(str.charAt(i)+32);
+			else
+				res+=str.charAt(i);
+		}
+		return res;
 	}
 
 	private static boolean isValidTarget(String target) {

@@ -1,4 +1,4 @@
-package ProblemsDay4Mar12;
+package Problems1_3;
 
 import java.util.Scanner;
 
@@ -16,6 +16,11 @@ public class Problem1 {
 		String str = lowerCase(in.nextLine());
 		System.out.println("Enter substring: ");
 		String substr = lowerCase(in.next());
+		int count=countOccurence(str, substr);
+		System.out.println("Output: " + count);
+	}
+
+	private static int countOccurence(String str,String substr) {
 		int i = 0, count = 0;
 		while (i < str.length() - substr.length()) {
 			int innerCount = 0, j = 0;
@@ -29,9 +34,8 @@ public class Problem1 {
 			if (innerCount == substr.length())
 				count++;
 		}
-		System.out.println("Output: " + count);
+		return count;
 	}
-
 	private static String lowerCase(String str) {
 		String res = "";
 		for (int i = 0; i < str.length(); i++) {

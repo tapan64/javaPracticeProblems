@@ -2,14 +2,21 @@ package ProblemsDay3Mar10;
 
 import java.util.Scanner;
 
+// input:  I am a good boy
+// output: I an a gooe boz
 public class Problem4 {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter Sentence: ");
 		String str = in.nextLine();
-		String res = "";
+		String res = solution(str);
+		System.out.println(res);
+	}
+
+	private static String solution(String str) {
 		int i = 0;
+		String res = "";
 		while (i < str.length() - 1) {
 			if (str.charAt(i) == ' ') {
 				res += ' ';
@@ -34,7 +41,7 @@ public class Problem4 {
 				i++;
 			}
 		}
-		System.out.println(res);
+		return res;
 	}
 
 	private static boolean isVowel(char ch) {

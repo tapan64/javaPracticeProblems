@@ -19,26 +19,24 @@ public class Problem3 {
 				array[k++] = matrix[i][j];
 			}
 
-		if (isUnique(array)) {
-			int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-			int minFirst = 0, minSecond = 0, maxFirst = 0, maxSecond = 0;
-			for (int s = 0; s < rows; s++) {
-				for (int t = 0; t < columns; t++) {
-					if (matrix[s][t] < min) {
-						min = matrix[s][t];
-						minFirst = s;
-						minSecond = t;
-					}
-					if (matrix[s][t] > max) {
-						max = matrix[s][t];
-						maxFirst = s;
-						maxSecond = t;
-					}
-				}
+		System.out.println("Enter row number 1 to be swapped");
+		int row1=in.nextInt();
+		System.out.println("Enter row number 2 to be swapped");
+		int row2=in.nextInt();
+		int[] temp=matrix[row1];
+		matrix[row1]=matrix[row2];
+		matrix[row2]=temp;
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				System.out.print(matrix[i][j] + " ");
 			}
-			int temp = matrix[minFirst][minSecond];
-			matrix[minFirst][minSecond] = matrix[maxFirst][maxSecond];
-			matrix[maxFirst][maxSecond] = temp;
+			System.out.println();
+		}
+		
+		
+		
+		if (isUnique(array)) {
+			matrix = swapMinMax(rows, columns, matrix);
 			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j < columns; j++) {
 					System.out.print(matrix[i][j] + " ");
@@ -51,6 +49,29 @@ public class Problem3 {
 			System.out.println("Items are not unique");
 		}
 
+	}
+
+	private static int[][] swapMinMax(int rows, int columns, int[][] matrix) {
+		int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+		int minFirst = 0, minSecond = 0, maxFirst = 0, maxSecond = 0;
+		for (int s = 0; s < matrix.length; s++) {
+			for (int t = 0; t < matrix[s].length; t++) {
+				if (matrix[s][t] < min) {
+					min = matrix[s][t];
+					minFirst = s;
+					minSecond = t;
+				}
+				if (matrix[s][t] > max) {
+					max = matrix[s][t];
+					maxFirst = s;
+					maxSecond = t;
+				}
+			}
+		}
+		int temp = matrix[minFirst][minSecond];
+		matrix[minFirst][minSecond] = matrix[maxFirst][maxSecond];
+		matrix[maxFirst][maxSecond] = temp;
+		return matrix;
 	}
 
 	private static boolean isUnique(int[] array) {

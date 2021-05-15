@@ -1,4 +1,4 @@
-package ProblemsDay4Mar12;
+package Problem4InsuranceApp;
 
 import java.util.Scanner;
 

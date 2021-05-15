@@ -10,6 +10,13 @@ public class Manager {
 		super();
 	}
 
+	public Manager(String managerId, String managerName, String department) {
+		super();
+		this.managerId = managerId;
+		this.managerName = managerName;
+		this.department = department;
+	}
+
 	public Manager(String managerId, String managerName, String department, Project[] projects) {
 		super();
 		this.managerId = managerId;

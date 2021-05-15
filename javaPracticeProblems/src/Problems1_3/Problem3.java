@@ -1,7 +1,9 @@
-package ProblemsDay4Mar12;
+package Problems1_3;
 
 import java.util.Scanner;
 
+// input: 3*3 matrix
+// output: average of diagonals
 public class Problem3 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -12,6 +14,13 @@ public class Problem3 {
 				matrix[i][j] = in.nextInt();
 			}
 		}
+		int average = getDiagonalAverage(matrix);
+		System.out.println("Secondary diagonal odd numbers average: " + average);
+	}
+
+//		Primary diagonal odd numbers average: (1 + 5 + 9) / 3 = 5
+//				Secondary diagonal odd numbers average: (5 + 7) /2 = 6
+	private static int getDiagonalAverage(int[][] matrix) {
 		int primarySum = 0, primaryCount = 0, secondarySum = 0, secondaryCount = 0;
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = i; j < i + 1; j++) {
@@ -30,9 +39,7 @@ public class Problem3 {
 				}
 			}
 		}
-		System.out.println("Secondary diagonal odd numbers average: " + secondarySum / secondaryCount);
-//		Primary diagonal odd numbers average: (1 + 5 + 9) / 3 = 5
-//				Secondary diagonal odd numbers average: (5 + 7) /2 = 6
+		return secondarySum / secondaryCount;
 	}
 
 }

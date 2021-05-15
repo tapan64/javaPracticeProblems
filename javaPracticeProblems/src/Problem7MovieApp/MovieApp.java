@@ -22,10 +22,11 @@ import java.util.Scanner;
 public class MovieApp {
 
 	static Scanner in = new Scanner(System.in);
-	static Movie[] movies = new Movie[1];
+	
 	static int moviesCount;
 
 	public static void main(String[] args) {
+		Movie[] movies = new Movie[1];
 		boolean flag = true;
 		do {
 			int id = 0;
@@ -34,7 +35,9 @@ public class MovieApp {
 			int choice = in.nextInt();
 			switch (choice) {
 			case 1:
-				Movie newMovie = getNewMovie();
+				if (movies.length == moviesCount)
+					movies = resize(movies);
+				Movie newMovie = getNewMovie(movies);
 				movies[moviesCount++] = newMovie;
 				displayAllMovies(movies);
 				break;
@@ -45,21 +48,21 @@ public class MovieApp {
 			case 3:
 				System.out.println("Enter movie rating to be searched: ");
 				float rating = in.nextFloat();
-				Movie[] moviesByRating = searchMoviesByGivenRating(rating);
+				Movie[] moviesByRating = searchMoviesByGivenRating(movies,rating);
 				displayAllMovies(moviesByRating);
 				break;
 			case 4:
 				System.out.println("Enter casting name to be searched: ");
 				in.nextLine();
 				String cast = in.nextLine();
-				Movie[] moviesByCasting = searchMoviesByCasting(cast);
+				Movie[] moviesByCasting = searchMoviesByCasting(movies,cast);
 				displayAllMovies(moviesByCasting);
 				break;
 			case 5:
 				System.out.println("Enter movie id whose rating to be updated: ");
 				id = in.nextInt();
-				if (isPresent(id)) {
-					Movie updatedMovie = updateRatingById(id);
+				if (isPresent(movies,id)) {
+					Movie updatedMovie = updateRatingById(movies,id);
 					displayMovie(updatedMovie);
 				} else
 					System.out.println("Movie id doesn't exist in the system.");
@@ -67,8 +70,8 @@ public class MovieApp {
 			case 6:
 				System.out.println("Enter movie id to be deleted: ");
 				id = in.nextInt();
-				if (isPresent(id))
-					movies = deleteMovieById(id);
+				if (isPresent(movies,id))
+					movies = deleteMovieById(movies,id);
 				else
 					System.out.println("Movie id doesn't exist in the system.");
 				break;
@@ -82,9 +85,8 @@ public class MovieApp {
 		} while (flag);
 	}
 
-	private static Movie getNewMovie() {
-		if (movies.length == moviesCount)
-			movies = resize();
+	private static Movie getNewMovie(Movie[] movies2) {
+		
 		System.out.println("Enter movie id: ");
 		int id = in.nextInt();
 		in.nextLine();
@@ -104,14 +106,14 @@ public class MovieApp {
 		return new Movie(id, name, casting, yearOfRelease, rating);
 	}
 
-	private static Movie[] resize() {
+	private static Movie[] resize(Movie[] movies) {
 		Movie[] newarr = new Movie[moviesCount + 1];
 		for (int i = 0; i < moviesCount; i++)
 			newarr[i] = movies[i];
 		return newarr;
 	}
 
-	private static boolean isPresent(int id) {
+	private static boolean isPresent(Movie[] movies,int id) {
 		for (int i = 0; i < moviesCount; i++)
 			if (movies[i].getId() == id)
 				return true;
@@ -140,7 +142,7 @@ public class MovieApp {
 		return newarr;
 	}
 
-	private static Movie[] searchMoviesByGivenRating(float rating) {
+	private static Movie[] searchMoviesByGivenRating(Movie[] movies,float rating) {
 		int count = 0;
 		for (int i = 0; i < moviesCount; i++)
 			if (movies[i].getRating() >= rating)
@@ -153,7 +155,7 @@ public class MovieApp {
 		return newarr;
 	}
 
-	private static Movie[] searchMoviesByCasting(String cast) {
+	private static Movie[] searchMoviesByCasting(Movie[] movies,String cast) {
 		int count = 0;
 		for (int i = 0; i < moviesCount; i++) {
 			for (int j = 0; j < movies[i].getCasting().length; j++) {
@@ -172,7 +174,7 @@ public class MovieApp {
 		return newarr;
 	}
 
-	private static Movie updateRatingById(int id) {
+	private static Movie updateRatingById(Movie[] movies,int id) {
 		for (int i = 0; i < moviesCount; i++) {
 			if (movies[i].getId() == id) {
 				System.out.println("Enter new rating to be updated: ");
@@ -204,7 +206,7 @@ public class MovieApp {
 		System.out.println("========================================");
 	}
 
-	private static Movie[] deleteMovieById(int id) {
+	private static Movie[] deleteMovieById(Movie[] movies,int id) {
 		Movie[] newarr = new Movie[moviesCount - 1];
 		int j = 0;
 		for (int i = 0; i < moviesCount; i++) {

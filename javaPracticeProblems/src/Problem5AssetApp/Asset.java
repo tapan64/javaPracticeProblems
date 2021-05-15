@@ -1,4 +1,4 @@
-package ProblemsDay4Mar12;
+package Problem5AssetApp;
 
 public class Asset {
 	private int sno;
